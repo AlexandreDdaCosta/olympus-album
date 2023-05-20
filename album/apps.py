@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class PhotographyConfig(AppConfig):
-    name = 'interface.apps.photography'
+class AlbumConfig(AppConfig):
+    name = 'django_album_olympus'

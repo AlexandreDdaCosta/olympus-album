@@ -1,7 +1,7 @@
 from django.urls import path
 
-from interface.apps.photography.views import SpaceshipEarth
+from django_album_olympus.views import AlbumHome
 
 urlpatterns = [
-    path(r'', SpaceshipEarth.as_view(), name='photography_spaceshipearth'),
+    path(r'', AlbumHome.as_view(), name='album_home'),
 ]
