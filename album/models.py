@@ -56,11 +56,13 @@ class Album(models.Model):
     opening_text = models.TextField(null=True)
     opening_effect = models.ForeignKey(Effect,
                                        null=True,
-                                       on_delete=models.CASCADE)
+                                       on_delete=models.CASCADE,
+                                       related_name='album_opening_effect')
     closing_text = models.TextField(null=True)
     closing_effect = models.ForeignKey(Effect,
                                        null=True,
-                                       on_delete=models.CASCADE)
+                                       on_delete=models.CASCADE,
+                                       related_name='album_closing_effect')
 
     def __unicode__(self):
         return u'%s' % (self.title)
@@ -76,12 +78,16 @@ class AlbumEntry(models.Model):
                               on_delete=models.CASCADE)
     order = models.IntegerField(MinValueValidator(1),
                                 null=False)
-    opening_effect = models.ForeignKey(Effect,
-                                       null=True,
-                                       on_delete=models.CASCADE)
-    closing_effect = models.ForeignKey(Effect,
-                                       null=True,
-                                       on_delete=models.CASCADE)
+    opening_effect = models.ForeignKey(
+        Effect,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='album_entry_opening_effect')
+    closing_effect = models.ForeignKey(
+        Effect,
+        null=True,
+        on_delete=models.CASCADE,
+        related_name='album_entry_closing_effect')
 
     class Meta:
         unique_together = ('album', 'order')
